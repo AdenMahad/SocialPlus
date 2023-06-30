@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>recommended results</h1>
+    {% if recommendations %}
+    <ul>
+        
+        {% for entry in recommendations %}
+        {% comment %} <li> {% entry %} </li> {% endcomment %}
+        <li><a href="post/{{entry.pk}}">{{entry}}</a></li>
+        {% endfor %}
+          
+    </ul>
+    {% else %}
+    <h1>Sorry! no close matches </h1>
+    {% endif %}
+{% endblock %}

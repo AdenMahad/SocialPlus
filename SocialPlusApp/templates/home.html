@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% block content %}
+{% for post in object_list %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:70%;
+  margin: auto;
+  margin-top:20px;
+  text-align: left;
+  overflow: auto;
+  font-family: arial;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #43a3ef;
+  text-align: left;
+  cursor: pointer;
+  width: 20%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body style="overflow: auto;">
+<div class="card">
+    <div>
+        <h2>{{post.author}} </h2>
+        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.body|wordwrap:80|linebreaks }}</p>
+    </div>
+</div>
+</body>
+</html>
+{% endfor %}
+
+{% endblock content %}
+

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:70%;
+  margin: auto;
+  margin-top:20px;
+  text-align: left;
+  overflow: auto;
+  font-family: arial;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #43a3ef;
+  text-align: left;
+  cursor: pointer;
+  width: 20%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body style="overflow: auto;">
+
+
+
+<div class="card">
+  <h1 style="padding-left:20px; padding-top:10px; color:#43a3ef;">{{ post.title }}</h1>
+         <p> <h3 style="padding-left:20px;"> {{ post.body|wordwrap:80|linebreaks }}</h3></p>
+         <p><a href="{% url 'post_edit' post.pk %}"><button>EditBlogPost</button></a></p>
+        <p><a href="{% url 'post_delete' post.pk %}"><button style="margin-top:1px;">DeleteblogPost</button></a></p>
+        <h2>Comments</h2>
+        {% for comment in post.comments.all %}
+          <div class="comment">
+            <div class="date">{{ comment.created_date }}</div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.body }}</p>
+          </div>
+        {% empty %}
+          <p>No comments yet.</p>
+        {% endfor %}
+        <hr>
+        <h3>Add a new comment</h3>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Submit</button>
+        </form>
+      
+      </div>
+
+</body>
+</html>
+{% endblock %}
+     
+
+  
+
+
+
