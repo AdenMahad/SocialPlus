@@ -53,7 +53,7 @@
         {% endfor %}
         <hr>
         <h3>Add a new comment</h3>
-        <form method="post">
+        <form  action="{% url 'comment_create' post.pk %}"  method="post">
           {% csrf_token %}
           {{ form.as_p }}
           <button type="submit">Submit</button>

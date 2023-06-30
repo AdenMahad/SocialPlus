@@ -30,5 +30,5 @@ class Comment(models.Model):
     def __str__(self):
         return self.body
     
-    # def get_absolute_url(self): # new
-    #     return reverse('post_detail',args=[str(Post.id)])
+    def get_absolute_url(self): # new
+        return reverse('post_detail',args=[str(self.id)])
