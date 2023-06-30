@@ -1,49 +1,65 @@
 {% extends 'base.html'%}
 {% block content %}
-{% for post in object_list %}
-
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width:70%;
+  width:90%;
   margin: auto;
   margin-top:20px;
   text-align: left;
   overflow: auto;
   font-family: arial;
+  padding: 50px;
+  margin-bottom:25px;
+  border-radius: 50px;
+  margin-bottom:25px;
+
+
 }
 
-.card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #43a3ef;
-  text-align: left;
-  cursor: pointer;
-  width: 20%;
-  font-size: 18px;
-}
+
 
 .card button:hover {
   opacity: 0.7;
 }
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+hr.double {
+  border-top: 3px double;
+  border-bottom: none;
+ }
 </style>
 </head>
 <body style="overflow: auto;">
 <div class="card">
+  {% for post in object_list %}
     <div>
-        <h2>{{post.author}} </h2>
+        <h6>{{post.created_date|date:"D,M,Y"}}</h6>
+        <hr>
+        <h2>{{post.author}}</h2>
         <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-        <p>{{ post.body|wordwrap:80|linebreaks }}</p>
+        <p>{{ post.body|wordwrap:120|linebreaks }}</p>
     </div>
+    <hr class="double">
+    <br>
+    <br>
+    <br>
+    <br>
+    {% endfor %}
 </div>
 </body>
 </html>
-{% endfor %}
+
 
 {% endblock content %}
 
