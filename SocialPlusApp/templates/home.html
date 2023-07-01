@@ -11,10 +11,10 @@
   margin-top:20px;
   text-align: left;
   overflow: auto;
-  font-family: arial;
+  font-family: sans serif;
   padding: 50px;
   margin-bottom:25px;
-  border-radius: 50px;
+  border-radius: 30px;
   margin-bottom:25px;
 
 
@@ -44,9 +44,10 @@ hr.double {
 <div class="card">
   {% for post in object_list %}
     <div>
+        <h2 style="font-size:20px;">posted by: <strong>{{post.author}}</strong></h2>
+        
         <h6>{{post.created_date|date:"D,M,Y"}}</h6>
         <hr>
-        <h2>{{post.author}}</h2>
         <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
         <p>{{ post.body|wordwrap:120|linebreaks }}</p>
     </div>

@@ -9,7 +9,7 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User',on_delete = models.CASCADE)
     body = models.TextField()
     created_date = models.DateTimeField( auto_now_add=True)
-
+    # likes = models.ManyToManyField('auth.User', related_name="post_likes")
     class Meta:
         ordering = ['created_date']
 
