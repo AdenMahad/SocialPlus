@@ -1,16 +1,46 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    height:100%;
+  }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:40%;
+  margin: auto;
+  margin-top:50px;
+  text-align: left;
+  overflow: auto;
+  font-family: sans serif;
+  padding: 50px;
+  margin-bottom:200px;
+  border-radius: 30px;
+  
+
+
+}
+
+</style>
+</head>
+<body style="overflow: auto;">
+<div class="card">
     <h1>recommended results</h1>
     {% if recommendations %}
     <ul>
         
         {% for entry in recommendations %}
         {% comment %} <li> {% entry %} </li> {% endcomment %}
-        <li><a href="post/{{entry.pk}}">{{entry}}</a></li>
+        <li><h4><a href="post/{{entry.pk}}">{{entry}}</a></h4></li>
         {% endfor %}
           
     </ul>
     {% else %}
     <h1>Sorry! no close matches </h1>
     {% endif %}
-{% endblock %}
+</div>
+</body>
+</html>
+{% endblock  %}

@@ -1,23 +1,22 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-
 {% block content %}
-
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width:60%;
+  width:50%;
   margin: auto;
-  margin-top:30px;
+  margin-top:20px;
   text-align: left;
   overflow: auto;
-  font-family: arial;
-  border-radius: 50px;
+  font-family: sans serif;
   padding: 50px;
   margin-bottom:25px;
+  border-radius: 30px;
+  
 
 
 }
@@ -26,15 +25,13 @@
 </head>
 <body style="overflow: auto;">
 <div class="card">
-    <div>
-        <h1 style="color:#43a3ef">New post</h1>
-<form action="" method="post">{% csrf_token %}
-{{ form|crispy }}
-<input style="background-color:#43a3ef" class="btn btn-primary"  type="submit" value="Post">
-</form>
-    </div>
+    <div class="form-group">
+    <form action="" method="post"> {% csrf_token %}
+        {{ form|crispy }}
+        <input style="background-color:#43a3ef" class="btn btn-primary" type="submit" value="signup">
+        </form>
+  </div>
 </div>
 </body>
 </html>
-{% endblock content %}
-
+{% endblock %}

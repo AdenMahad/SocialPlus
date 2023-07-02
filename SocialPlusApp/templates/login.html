@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    height:100%;
+  }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width:50%;
+  margin: auto;
+  margin-top:50px;
+  text-align: left;
+  overflow: auto;
+  font-family: sans serif;
+  padding: 50px;
+  margin-bottom:200px;
+  border-radius: 30px;
+  
+
+
+}
+
+</style>
+</head>
+<body style="overflow: auto;">
+<div class="card">
+    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+        <div class="form-group">
+          <label style="color:#43a3ef;" for="Username">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="Enter Username">
+        </div>
+        <div class="form-group">
+          <label style="color:#43a3ef;" for="Password">Password</label>
+          <input type="password" name="password" class="form-control"  placeholder="Enter Password">
+        </div>
+        <button style="background-color:#43a3ef" type="submit" class="btn btn-primary">Login</button>
+      </form>
+    
+</div>
+</body>
+</html>
+{% endblock %}

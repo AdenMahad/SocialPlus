@@ -12,13 +12,14 @@ body {
   margin: 0;
   font-family:"Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 18px;
+  height: 100%;
 
 }
 
 .topnav {
   overflow: hidden;
   background-color: #fce667;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .topnav a, .topnav h1 {
@@ -92,12 +93,16 @@ body {
     {% comment %} border: 1px solid #ccc;  {% endcomment %}
     
   }
-  footer {
+  {% comment %} footer {
     text-align: center;
-    padding: 3px;
+    padding: -5px;
     background-color: #fce667;
     color: #43a3ef;
-  }
+    position: relative;
+    left: 0;
+    bottom: 10;
+    width: 100%;
+  } {% endcomment %}
   
 </style>
 </head>
@@ -114,6 +119,18 @@ body {
       <button type="submit"><i class="fa fa-search" style="color:#fce667"></i></button>
     </form>
   </div>
+  {% if user.is_authenticated %}
+  <div style="display: inline-block; float:right; margin-right:40px; ">
+  <a href="{% url 'logout' %}"><button class="btn btn-primary btn sm" style="margin-top:6px; width:70px; background-color:#43a3ef; margin-left-60px; color:#fce667;" >logout</button></a>
+  {% comment %} <strong style="color:#43a3ef; margin-bottom:5px;">Hello, {{ user.username }}</strong> {% endcomment %}
+
+</div>
+{% else %}
+<div style="display: inline-block; float:right; margin-right:35px; margin-top:6px;">
+<a href="{% url 'login' %}"><button class="btn btn-primary " style="width:70px; background-color:#43a3ef;  color:#fce667;" type="submit">login</button></a>
+<a href="{% url 'signup' %}"><button class="btn btn-primary btn sm" style="width:70px; color:#fce667; background-color:#43a3ef; margin-left-60px;" >signup</button></a>
+</div>
+{% endif %}
 </div>
 
 <div style="padding-left:16px">
@@ -122,8 +139,9 @@ body {
 
 </div>
 </body>
-<footer>
-  <p>Author: ADAM MAHAD<br>
-  Contact: ADENMAHAD@OUTLOOK.COM </p>
+<footer style="background-color:#fce667;" id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>Copyright &copy; SocialPlus</small>
+  </div>
 </footer>
 </html>

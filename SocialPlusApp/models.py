@@ -1,5 +1,8 @@
 from django.db import models
 from django.urls import reverse 
+from django.contrib.auth.models import User
+
+
 
 
 # Create your models here.
@@ -9,7 +12,7 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User',on_delete = models.CASCADE)
     body = models.TextField()
     created_date = models.DateTimeField( auto_now_add=True)
-    # likes = models.ManyToManyField('auth.User', related_name="post_likes")
+
     class Meta:
         ordering = ['created_date']
 
@@ -32,3 +35,8 @@ class Comment(models.Model):
     
     def get_absolute_url(self): # new
         return reverse('post_detail',args=[str(self.id)])
+    
+class LikeDislike(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    value = models.IntegerField()
